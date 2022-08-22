@@ -1,0 +1,55 @@
+GET http://127.0.0.1:8080 
+Cookie: XDEBUG_SESSION=start
+###
+
+GET http://127.0.0.1:8080/?XDEBUG_SESSION=start
+###
+
+GET http://127.0.0.1:8080/users/show?username=admin
+###
+
+GET http://127.0.0.1:8080/posts/show?uuid=a9c2ca36-13b3-48ff-a82d-7e0953cff985
+###
+
+GET http://127.0.0.1:8080/likes/show?uuid=f508ce24-1f6b-4a57-9bba-a6e465862e6e
+###
+
+POST http://127.0.0.1:8080/users/create
+
+{
+"username": "ivan",
+"first_name": "Ivan",
+"last_name": "Ivanov"
+}
+###
+
+POST http://127.0.0.1:8080/posts/create
+
+{
+"author_uuid": "f8fbad52-44f4-42a9-ae8b-48ba93c93b36",
+"text": "some post",
+"title": "some title"
+}
+###
+
+POST http://127.0.0.1:8080/posts/comment
+
+{
+"author_uuid": "f8fbad52-44f4-42a9-ae8b-48ba93c93b36",
+"post_uuid": "a9c2ca36-13b3-48ff-a82d-7e0953cff985",
+"text": "some comment"
+}
+###
+
+POST http://127.0.0.1:8080/posts/like
+
+{
+"author_uuid": "f8fbad52-44f4-42a9-ae8b-48ba93c93b36",
+"post_uuid": "a9c2ca36-13b3-48ff-a82d-7e0953cff985"
+}
+###
+
+DELETE http://127.0.0.1:8080/users/delete?username=admin
+###
+
+DELETE http://127.0.0.1:8080/posts/delete?uuid=f3700add-519e-4223-b015-72df74266295

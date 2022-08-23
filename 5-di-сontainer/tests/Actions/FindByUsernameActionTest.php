@@ -110,6 +110,11 @@ class FindByUsernameActionTest extends TestCase
                 }
                 throw new UserNotFoundException("Not found");
             }
+
+            public function deleteByUsername(string $username): void
+            {
+                throw new UserNotFoundException('Not found');
+            }
         };
     }
 }

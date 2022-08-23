@@ -33,12 +33,20 @@ class SqliteCommentsRepository implements CommentsRepositoryInterface
     public function get(UUID $uuid): Comment
     {
         $statement = $this->connection->prepare(
-            "SELECT * 
+            "SELECT users.uuid AS author_uuid,
+                    username,
+                    first_name,
+                    last_name,
+                    posts.uuid AS post_uuid,
+                    title,
+                    posts.text AS post,
+                    comments.uuid,
+                    comments.text AS comment
                 FROM users
-                LEFT JOIN posts
-                ON users.uuid = posts.author_uuid
-                LEFT JOIN comments
-                ON posts.uuid = comments.post_uuid
+                    LEFT JOIN posts
+                    ON users.uuid = posts.author_uuid
+                    LEFT JOIN comments
+                    ON posts.uuid = comments.post_uuid
                 WHERE comments.uuid = :uuid"
         );
 
@@ -68,14 +76,14 @@ class SqliteCommentsRepository implements CommentsRepositoryInterface
             new UUID($result['post_uuid']),
             $user,
             $result['title'],
-            $result['text']
+            $result['post']
         );
 
         return new Comment(
             new UUID($result['uuid']),
             $post,
             $user,
-            $result['text']
+            $result['comment']
         );
     }
 }

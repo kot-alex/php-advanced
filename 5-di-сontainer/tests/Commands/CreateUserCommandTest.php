@@ -41,6 +41,11 @@ class CreateUserCommandTest extends TestCase
             {
                 throw new UserNotFoundException('Not found');
             }
+
+            public function deleteByUsername(string $username): void
+            {
+                throw new UserNotFoundException('Not found');
+            }
         };
     }
 
@@ -82,6 +87,11 @@ class CreateUserCommandTest extends TestCase
             }
 
             public function getByUsername(string $username): User
+            {
+                throw new UserNotFoundException('Not found');
+            }
+
+            public function deleteByUsername(string $username): void
             {
                 throw new UserNotFoundException('Not found');
             }

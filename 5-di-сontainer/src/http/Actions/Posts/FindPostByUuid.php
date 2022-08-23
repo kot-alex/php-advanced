@@ -13,7 +13,7 @@ use Alex\Weblog\Exceptions\InvalidArgumentException;
 use Alex\Weblog\http\SuccessfulResponse;
 use Alex\Weblog\Blog\UUID;
 
-class FindByUuid implements ActionInterface
+class FindPostByUuid implements ActionInterface
 {
     public function __construct(
         private PostsRepositoryInterface $postsRepository
@@ -23,21 +23,21 @@ class FindByUuid implements ActionInterface
     public function handle(Request $request): Response
     {
         try {
-            $uuid = $request->query('uuid');
+            $postUuid = $request->query('uuid');
         } catch (HttpException $e) {
             return new ErrorResponse($e->getMessage());
         }
 
         try {
-            $post = $this->postsRepository->get(new UUID($uuid));
+            $post = $this->postsRepository->get(new UUID($postUuid));
         } catch (PostNotFoundException | InvalidArgumentException $e) {
             return new ErrorResponse($e->getMessage());
         }
 
         return new SuccessfulResponse([
-            'username' => $post->user()->username(),
-            'title' => $post->title(),
-            'text' => $post->text(),
+            'username' => (string)$post->user()->username(),
+            'title' => (string)$post->title(),
+            'text' => (string)$post->text(),
         ]);
     }
 }

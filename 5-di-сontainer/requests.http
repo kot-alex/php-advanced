@@ -11,6 +11,9 @@ GET http://127.0.0.1:8080/users/show?username=admin
 GET http://127.0.0.1:8080/posts/show?uuid=a9c2ca36-13b3-48ff-a82d-7e0953cff985
 ###
 
+GET http://127.0.0.1:8080/comments/show?uuid=b17556ec-2daa-4f86-a593-f91c8df817a3
+###
+
 GET http://127.0.0.1:8080/likes/show?uuid=f508ce24-1f6b-4a57-9bba-a6e465862e6e
 ###
 

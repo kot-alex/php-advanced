@@ -31,7 +31,7 @@ class SqliteLikesRepository implements LikesRepositoryInterface
     public function getByPostUuid(UUID $postUuid): array
     {
         $statement = $this->connection->prepare(
-            "SELECT uuid
+            "SELECT *
                 FROM likes
                 WHERE post_uuid = :uuid"
         );
@@ -63,7 +63,7 @@ class SqliteLikesRepository implements LikesRepositoryInterface
             ':post_uuid' => (string)$postUuid
         ]);
 
-        $result = $statement->fetch(\PDO::FETCH_ASSOC);
+        $result = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         if ($result) {
             throw new LikeAlreadyExistsException("User $authorUuid already liked post $postUuid");

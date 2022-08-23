@@ -2,7 +2,8 @@
 
 use Alex\Weblog\Exceptions\HttpException;
 use Alex\Weblog\http\Actions\Users\FindByUsername;
-use Alex\Weblog\http\Actions\Posts\FindByUuid;
+use Alex\Weblog\http\Actions\Posts\FindPostByUuid;
+use Alex\Weblog\http\Actions\Comments\FindCommentByUuid;
 use Alex\Weblog\http\Actions\Likes\FindByPostUuid;
 use Alex\Weblog\http\Actions\Users\CreateUser;
 use Alex\Weblog\http\Actions\Posts\CreatePost;
@@ -38,7 +39,8 @@ try {
 $routes = [
     'GET' => [
         '/users/show' => FindByUsername::class,
-        '/posts/show' => FindByUuid::class,
+        '/posts/show' => FindPostByUuid::class,
+        '/comments/show' => FindCommentByUuid::class,
         '/likes/show' => FindByPostUuid::class,
     ],
     'POST' => [

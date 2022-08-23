@@ -5,6 +5,8 @@ namespace Alex\Weblog\UnitTests\Repositories;
 use Alex\Weblog\Exceptions\CommentNotFoundException;
 use Alex\Weblog\Blog\Repositories\CommentsRepository\SqliteCommentsRepository;
 use Alex\Weblog\Blog\Comment;
+use Alex\Weblog\Blog\Post;
+use Alex\Weblog\Blog\User;
 use Alex\Weblog\Blog\UUID;
 use PHPUnit\Framework\TestCase;
 
@@ -43,8 +45,8 @@ class SqliteCommentsRepositoryTest extends TestCase
         $repository->save(
             new Comment(
                 new UUID('6786ac95-0497-44b8-a657-4dc2ae8fb382'),
-                new UUID('ada3b16d-70df-42ba-a3f2-1c04c45f498f'),
-                new UUID('d0047131-f854-4812-831f-4b2b8cfb3bf1'),
+                new Post(new UUID('ada3b16d-70df-42ba-a3f2-1c04c45f498f'), new User(UUID::random(), 'username', 'firstname', 'lastname'), 'firstname', 'lastname'),
+                new User(new UUID('d0047131-f854-4812-831f-4b2b8cfb3bf1'), 'username', 'firstname', 'lastname'),
                 'some_comment'
             )
         );

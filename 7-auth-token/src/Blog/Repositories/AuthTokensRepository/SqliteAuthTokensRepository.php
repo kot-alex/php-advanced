@@ -89,7 +89,7 @@ class SqliteAuthTokensRepository implements AuthTokensRepositoryInterface
         }
     }
 
-    public function getToken(User $user): AuthToken
+    public function getByUser(User $user): AuthToken
     {
         $userUuid = $user->uuid();
 

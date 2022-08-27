@@ -29,7 +29,7 @@ class LogOut implements ActionInterface
             return new ErrorResponse($e->getMessage());
         }
 
-        $authToken = $this->authTokensRepository->getToken($user);
+        $authToken = $this->authTokensRepository->getByUser($user);
 
         $newAuthToken = new AuthToken(
             $authToken->token(),

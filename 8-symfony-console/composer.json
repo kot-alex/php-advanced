@@ -1,0 +1,37 @@
+{
+    "name": "alex/weblog",
+    "autoload": {
+        "psr-4": {
+            "Alex\\Weblog\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Alex\\Weblog\\UnitTests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kot-alex",
+            "email": "79389493+kot-alex@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "symfony/polyfill-uuid": "^1.26",
+        "psr/container": "^2.0",
+        "monolog/monolog": "^3.2",
+        "vlucas/phpdotenv": "^5.4",
+        "symfony/console": "^6.1",
+        "fakerphp/faker": "^1.20"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+        "tests": "phpunit tests --testdox --colors",
+        "commandstests": "phpunit ./tests/Commands --testdox --colors",
+        "repostests": "phpunit ./tests/Repositories --testdox --colors",
+        "actionstests": "phpunit ./tests/Actions --testdox --colors",
+        "containertests": "phpunit ./tests/Container --testdox --colors"
+    }
+}

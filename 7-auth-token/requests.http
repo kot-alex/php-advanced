@@ -1,0 +1,74 @@
+GET http://127.0.0.1:8080 
+Cookie: XDEBUG_SESSION=start
+###
+
+GET http://127.0.0.1:8080/?XDEBUG_SESSION=start
+###
+
+GET http://127.0.0.1:8080/users/show?username=user1
+###
+
+GET http://127.0.0.1:8080/posts/show?uuid=9c04f4f4-5931-4bcc-82d8-e754c0f06e08
+###
+
+GET http://127.0.0.1:8080/comments/show?uuid=f4db5cfc-bb52-40c2-9af2-1e0fe616678f
+###
+
+GET http://127.0.0.1:8080/likes/showbypost?uuid=9c04f4f4-5931-4bcc-82d8-e754c0f06e08
+###
+
+POST http://127.0.0.1:8080/users/create
+
+{
+"username": "user2",
+"password": "pass2",
+"first_name": "John",
+"last_name": "Smith"
+}
+###
+
+POST http://127.0.0.1:8080/login
+
+{
+"username": "user1",
+"password": "pass1"
+}
+###
+
+POST http://127.0.0.1:8080/logout
+Authorization: Bearer 5ad28cf9f9c91579c3c7200f93852eada928100044c81b4be413d2a3f41a736a44ddfe1ea2a224eb
+
+{
+}
+###
+
+POST http://127.0.0.1:8080/posts/create
+Authorization: Bearer 5ad28cf9f9c91579c3c7200f93852eada928100044c81b4be413d2a3f41a736a44ddfe1ea2a224eb
+
+{
+"title": "some title",
+"text": "some post"
+}
+###
+
+POST http://127.0.0.1:8080/posts/comment
+Authorization: Bearer 5ad28cf9f9c91579c3c7200f93852eada928100044c81b4be413d2a3f41a736a44ddfe1ea2a224eb
+
+{
+"post_uuid": "9c04f4f4-5931-4bcc-82d8-e754c0f06e08",
+"text": "some comment"
+}
+###
+
+POST http://127.0.0.1:8080/posts/like
+Authorization: Bearer 5ad28cf9f9c91579c3c7200f93852eada928100044c81b4be413d2a3f41a736a44ddfe1ea2a224eb
+
+{
+"post_uuid": "9c04f4f4-5931-4bcc-82d8-e754c0f06e08"
+}
+###
+
+DELETE http://127.0.0.1:8080/users/delete?username=user3
+###
+
+DELETE http://127.0.0.1:8080/posts/delete?uuid=db6debc4-c0d8-41af-b3d4-b62071394e73

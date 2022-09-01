@@ -1,0 +1,17 @@
+{
+    "name": "alex/weblog",
+    "autoload": {
+        "psr-4": {
+            "Alex\\Weblog\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "kot-alex",
+            "email": "79389493+kot-alex@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "fakerphp/faker": "^1.20"
+    }
+}

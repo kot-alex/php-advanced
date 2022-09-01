@@ -53,8 +53,8 @@ class PopulateDB extends Command
         $usersNumber = $input->getOption('users-number');
         $postsNumber = $input->getOption('posts-number');
 
-        empty($usersNumber) ? $usersNumber = 10 : $usersNumber;
-        empty($postsNumber) ? $postsNumber = 20 : $postsNumber;
+        $usersNumber = empty($usersNumber) ? 10 : $usersNumber;
+        $postsNumber = $postsNumber ?? 20;
 
         $users = [];
         $posts = [];

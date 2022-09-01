@@ -133,7 +133,7 @@ class CreateUserTest extends TestCase
                 'username' => 'user1',
                 'password' => 'some_password',
                 'first_name' => 'Ivan',
-                'last_name' => 'Nikitin',
+                'last_name' => 'Ivanov',
             ]),
             new NullOutput()
         );
